@@ -1,8 +1,29 @@
 import vigenere
+import caesar
+import input
 
 def main():
 
-    encryptMethod =  str(input("What's the type of encryption is used ?"))
+    choiceProcess,cryptoType,message,key= input.inputInit()
+    
+    if choiceProcess == "decrypt":
 
-    message = str(input("What's the message I can decrypt for you ?"))
+        if cryptoType == "caesar":
 
+            print(caesar.caesarCypherDecrypt(message,key))
+
+        else:
+
+            print(vigenere.vigenereDecrypt(message,key))
+
+    else:
+
+        if cryptoType == "caesar":
+
+            print(caesar.caesarCypherEncrypt(message,key))
+
+        else:
+
+            print(vigenere.vigenereDecrypt(message,key))
+            
+main()

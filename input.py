@@ -1,14 +1,14 @@
 
 def inputCryptOrDecrypt():
 
-    choiceProcess = { '1' : "Decrypt",
-                     '2' : "Encrypt"}
+    choiceProcess = { '1' : "decrypt",
+                     '2' : "encrypt"}
 
-    case = str(input("what do you need today ? :\n1 - Decrypt\n2 - Encrypt\n ->> : "))
+    case = str(input("what do you need today ? :\n1 - decrypt\n2 - encrypt\n ->> : "))
 
     while not case in choiceProcess.keys():
 
-        case = str(input("Please choose an available model from the list :\n1 - Decrypt\n2 - Encrypt\n ->> : "))
+        case = str(input("Please choose an available model from the list :\n1 - decrypt\n2 - encrypt\n ->> : "))
     
     return choiceProcess[case]
 
@@ -16,7 +16,7 @@ def inputCryptOrDecrypt():
 def inputEncryptMethod( choiceProcesss ):
 
     methodList= { '1':"caesar", 
-                 '2':"Vigenere" }
+                 '2':"vigenere" }
     
     if choiceProcesss == "Decrypt":
             
@@ -36,12 +36,22 @@ def inputEncryptMethod( choiceProcesss ):
     
     return methodList[encryptMethod]
 
-
 def inputInit():
 
     choiceProcess = inputCryptOrDecrypt()
 
-    cryptoType = inputEncryptMethod( choiceProcess )
+    print("You choose ", choiceProcess)
 
+    cryptoType = inputEncryptMethod(choiceProcess)
 
-inputInit()
+    message = str(input("What's the message you want to check : "))
+
+    if cryptoType == "vigenere":
+        
+        key = str(input("What's the key ? : "))
+
+    if cryptoType == "caesar":
+
+        key=int(input("What's the key ? : "))
+
+    return choiceProcess,cryptoType,message,key

@@ -31,7 +31,6 @@ def caesarCypherDecrypt(stringToEncrypt, key):
 
     for char in stringToEncrypt:
 
-        print(char)
 
         if char.isupper():
 
